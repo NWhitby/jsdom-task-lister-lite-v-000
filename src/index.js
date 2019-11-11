@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  addItem()
+  // your code here
+  const newTaskForm = document.getElementById("create-task-form");
+
+  newTaskForm.addEventListener("submit", createNewTask);
 });
 
-function addItem() {
-  document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    let item = document.getElementById('new-task-description');
-    let li = document.createElement('li');
-    li.innerHTML = item.value;
-    document.getElementById('list').appendChild(li);
-    e.target.reset();
-  })
-}
+const createNewTask = event => {
+  event.preventDefault();
+  const newTaskDescription = document.getElementById("new-task-description");
+  const newTask = document.createElement("li");
+  newTask.innerText = newTaskDescription.value;
+  appendNewTask(newTask);
+  event.target.reset();
+};
+
+const appendNewTask = task => {
+  const newTaskUl = document.getElementById("tasks");
+  newTaskUl.appendChild(task);
+};
