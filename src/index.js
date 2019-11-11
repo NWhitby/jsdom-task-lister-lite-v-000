@@ -1,15 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-  addItem()
-});
+let taskForm = document.getElementById("create-task-form");
+taskForm.addEventListener("submit", listToDo);
 
-function addItem() {
-  document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    let item = document.getElementById('new-task-description');
-    let li = document.createElement('li');
-    li.innerHTML = item.value;
-    document.getElementById('list').appendChild(li);
-    e.target.reset();
-  })
-}
-    
+function listToDo(item) {
+  item.preventDefault();
+  let task = document.getElementById("new-task-description");
+
+  let listItemText = document.createElement("p");
+  let listItem = document.createElement("li");
+  let taskList = document.getElementById("tasks");
+
+  listItemText.innerText = task.value;
+  listItem.appendChild(listItemText);
+  taskList.appendChild(listItem);
+
+  task.value = "";
+};
