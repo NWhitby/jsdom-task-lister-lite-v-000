@@ -12,4 +12,4 @@ function addItem() {
     e.target.reset();
   })
 }
-© 2019 GitHub, Inc.
+    
